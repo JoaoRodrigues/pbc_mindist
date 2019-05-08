@@ -59,7 +59,7 @@ sel.add_argument('--alpha_carbons', action='store_const', dest='atomsel',
                  help='Uses only alpha carbons')
 sel.add_argument('--backbone', action='store_const', dest='atomsel',
                  const='backbone',
-                 help='Uses only backbone atoms')
+                 help='Uses only protein backbone atoms')
 sel.add_argument('--heavy_atoms', action='store_const', dest='atomsel',
                  const='heavy',
                  help='Uses only heavy atoms (default)')
@@ -99,7 +99,10 @@ if cmd.atomsel == 'alpha':
     atomsel = t.top.select('protein and name CA')
     logging.info(f'Selecting protein alpha carbons (N={len(atomsel)})')
 elif cmd.atomsel == 'heavy':
-    atomsel = t.top.select('protein and not element H')
+    atomsel = [a.index for a in t.top.atoms if
+               not a.residue.is_water and  # no solvent
+               not a.residue.name.startswith('POP') and  # no lipids
+               a.element.symbol in set(('C', 'N', 'O', 'P', 'S'))]
     logging.info(f'Selecting protein heavy atoms (N={len(atomsel)})')
 elif cmd.atomsel == 'backbone':
     atomsel = t.top.select('protein and backbone')
@@ -110,7 +113,7 @@ elif cmd.atomsel == 'all':
 
 t.atom_slice(atomsel, inplace=True)
 
-assert t.n_atoms > 1, 'Trajectory contains only one atom?'
+assert t.n_atoms > 1, 'Trajectory must contain more than one atom?'
 
 # Reimage trajectory
 if cmd.reimage:

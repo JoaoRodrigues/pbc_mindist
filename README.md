@@ -26,7 +26,6 @@ python mindist.py yourtrajectory.dcd yourtopology.pdb --backbone
 ```
 
 ## Caveats
-- OOB support for protein trajectories only (selections all do `protein and ...`)
 - Reimaging function will fail with `--alpha_carbons`. Reimage trajectory first
 and save the coordinates/topology separately. 
 - Not tested on Windows/OSX
