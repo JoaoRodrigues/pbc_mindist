@@ -17,7 +17,7 @@ equivalent to `g_mindist` of the GROMACS suite ([url](http://manual.gromacs.org/
 * Other:
     - OpenMP (for parallelizable version)
 
-## Installation
+## Installation / Usage
 ```
 git clone https://github.com/JoaoRodrigues/pbc_mindist
 cd pbc_mindist
