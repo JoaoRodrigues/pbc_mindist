@@ -30,3 +30,9 @@ python mindist.py yourtrajectory.dcd yourtopology.pdb --backbone
 and save the coordinates/topology separately. 
 - Not tested on Windows/OSX
 - Compilation will fail without OpenMP (setup.py could use fixing...)
+
+## License
+Code is licensed under the open-source Apache License (version 2.0).
+See `LICENSE` for more details, but essentially, if you use it, just give
+credit and if you publish something with it, just add the URL of this 
+repository in your Methods section.
