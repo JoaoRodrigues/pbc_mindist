@@ -1,4 +1,0 @@
-Cython==0.29
-mdtraj==1.9.1
-numpy==1.15.4
-OpenMM==7.4.0

@@ -3,6 +3,8 @@ Optimized Cython code to calculate distances
 taking into account periodic boundary conditions.
 """
 
+__all__ = ['pbc_mindist_parallel', 'pbc_mindist_serial']
+
 import cython
 from cython.parallel import prange
 cimport cython
