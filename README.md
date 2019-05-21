@@ -21,8 +21,9 @@ equivalent to `g_mindist` of the GROMACS suite ([url](http://manual.gromacs.org/
 ```
 git clone https://github.com/JoaoRodrigues/pbc_mindist
 cd pbc_mindist
-python setup.py build_ext --inplace
-python mindist.py yourtrajectory.dcd yourtopology.pdb --backbone
+conda create -n pbc_mindist -f environment.yml
+python setup.py install
+pbc_mindist yourtrajectory.dcd yourtopology.pdb --backbone
 ```
 
 ## Caveats
